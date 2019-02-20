@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>@kev_nz/etherscanner</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <meta name="description" content="Receive all the ethereum transactions that have been included in the block, including 'internal' transactions" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <div class="container">
+
+  <h1 id="etherscanner">EtherScanner</h1>
+<p>Module for parse ethereum transactions or block and get from them all Eth transfers (normal and "internal")</p>
+<h2 id="warning">Warning</h2>
+<p>This module is deprecated, just like Ethereum should be.</p>
+<p>Ethereum is junk and you almost certainly do not need a blockchain</p>
+<h2 id="installation">Installation</h2>
+<p>If you must.</p>
+<pre><code class="bash language-bash">npm install @kev_nz/etherscanner</code></pre>
+<h2 id="usage">Usage</h2>
+<p>Please don't</p>
+<pre><code class="js language-js">const EtherScanner = require('@kev_nz/etherscanner');
+
+const etherScanner = await EtherScanner(`http://localhost:6082`);</code></pre>
+<h5 id="get-all-transfers-by-transaction-hash">Get all transfers by transaction hash</h5>
+<pre><code class="js language-js">const result = await etherScanner.scanTransaction('0xc475f8bf9d2721b17f7c09944c2aa32ea943f452cb54ee0aefcb98ead0735274');
+console.log(result);</code></pre>
+<p>result:</p>
+<pre><code class="json language-json">[{
+    "hash": "0xc475f8bf9d2721b17f7c09944c2aa32ea943f452cb54ee0aefcb98ead0735274",
+    "from": "0x1617d6e2dca84fec5c17f37d4141d2c4ec5c6d05",
+    "to": "0xd1a2511bc222f38f463c62c9254faf7b710835e4",
+    "value": 10000000000000000,
+    "blockNumber": 1818075,
+    "blockHash": "0x402a1df2fe61dcc83bec29c1202938e2fd739d97e614dbab351561dc04b01cd3",
+    "isInternal": false,
+    "type": ""
+}, {
+    "hash": "0xc475f8bf9d2721b17f7c09944c2aa32ea943f452cb54ee0aefcb98ead0735274",
+    "from": "0xd1a2511bc222f38f463c62c9254faf7b710835e4",
+    "to": "0x1617d6e2dca84fec5c17f37d4141d2c4ec5c6d05",
+    "value": 12468329110548072,
+    "blockNumber": 1818075,
+    "blockHash": "0x402a1df2fe61dcc83bec29c1202938e2fd739d97e614dbab351561dc04b01cd3",
+    "isInternal": true,
+    "type": "CALL"
+}]</code></pre>
+<p>type - "" || CALL || CREATION || SELFDESTRUCT</p>
+<h5 id="get-all-transfers-by-block-number">Get all transfers by block number</h5>
+<pre><code class="js language-js">etherScanner.scanBlock(1822433, (err, result) =&gt; {
+    console.log(result);
+});</code></pre>
+  </div>
+</body>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64038939-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-64038939-2');
+</script>
+
+</body>
